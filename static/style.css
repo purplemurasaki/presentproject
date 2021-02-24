@@ -1,0 +1,87 @@
+.card {
+    margin-bottom: 30px;
+}
+.js-animation {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(250px);
+    transition: all 1s;
+    
+    font-size: 30px;
+}
+
+.js-animation.is-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(100px);
+}
+
+.wrapper {
+    min-height: 200vh;
+    position: relative;
+    /*←相対位置*/
+    padding-top: 300px;
+    padding-bottom: 500px;
+    /*←footerの高さ*/
+    box-sizing: border-box;
+    /*←全て含めてmin-height:100vhに*/
+}
+
+footer {
+    width: 100%;
+    background-color: #89c7de;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+
+    position: absolute;
+    /*←絶対位置*/
+    bottom: 0;
+    left: 0;
+    /*下に固定*/
+}
+
+header {
+    width: 100%;
+    background-color: #89c7de;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    position: absolute;
+    /*←絶対位置*/
+    top: 0;
+    font-size: large;
+}
+
+img {
+    width: 100%;
+}
+body{
+    font-family:'Noto Sans JP', sans-serif;
+    /* 'Cherry Swash', "メイリオ","Arial"; */
+}
+.carousel-caption {
+    position: absolute;
+    z-index: 1;
+    display:table;
+    width:100%;
+    height:100%;
+}
+
+.absolute-div {
+    position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+}
+
+.carousel-caption h3 {
+    display:table-cell;
+    vertical-align: middle;
+    text-align:center;
+}
+
+.item {
+    position:relative;
+}
