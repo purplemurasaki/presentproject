@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel='stylesheet' type="text/css" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700 rel=" stylesheet">
+
+    <div class="wrapper">
+        <header>
+            <div class="container-fluid">
+                <div class="row justify-content-between">
+                    <div class="m-2 col-2" STYLE="font-size: 150%;">Dear Asami</div>
+                    <div class="m-2 col-4">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb bg-warning">
+                                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'list' %}">Memory</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'present' %}">Present</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'message' %}">Message</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <title>Hello, world!</title>
+        {% block header %}
+        {% endblock header %}
+</head>
+
+<body>
+    <script>
+        /***到達したら要素を表示させる*/
+        function showElementAnimation() {
+            var element = document.getElementsByClassName('js-animation');
+            if (!element) return; // 要素がなかったら処理をキャンセル
+
+            var showTiming = window.innerHeight > 768 ? 200 : 40; // 要素が出てくるタイミングはここで調整
+            var scrollY = window.pageYOffset;
+            var windowH = window.innerHeight;
+
+            for (var i = 0; i < element.length; i++) {
+                var elemClientRect = element[i].getBoundingClientRect();
+                var elemY = scrollY + elemClientRect.top;
+                if (scrollY + windowH - showTiming > elemY) {
+                    element[i].classList.add('is-show');
+                } else if (scrollY + windowH < elemY) {
+                    // 上にスクロールして再度非表示にする場合はこちらを記述
+                    element[i].classList.remove('is-show');
+                }
+            }
+        }
+        showElementAnimation();
+        window.addEventListener('scroll', showElementAnimation);
+    </script>
+    <noscript>
+        <style>
+            .js-animation {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0px);
+            }
+        </style>
+    </noscript>
+    {% block content %}
+    {% endblock content %}
+
+    <footer>
+        <p>ちょっとしたお祝いでございます。</p>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

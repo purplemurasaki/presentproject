@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+    {% for item in object_list %}
+
+    <div class="card" id="accordion">
+            <div class="card-heading">
+                <h4 class="card-header">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#{{item.content_2}}">{{ item.title }}</a>
+                </h4>
+            </div>
+            <div id="{{item.content_2}}" class="panel-collapse collapse in">
+                <div class="card-body">
+                    <p>{{ item.content_1 }}</p>
+                    <img src='{{item.images.url}}'>
+                    <a href="{{item.images.url}}" download>画像を保存する</a>
+                </div>
+            </div>
+        
+    </div>
+    {% endfor %}
+
+    <div class="element js-animation">
+        <div class="row">
+            <div class="m-2 col align-self-center display-4 text-center">
+                <div class="m-2 col display-5 text-center">⬇️Click here⬇️</div>
+                <a class="btn btn-success btn-lg btn-block" href="{% url 'list' %}" role="button">誕生日の思い出</a>
+                <a class="btn btn-success btn-lg btn-block" href="{% url 'message' %}" role="button">メッセージ</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock content %}
